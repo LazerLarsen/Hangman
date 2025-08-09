@@ -45,4 +45,19 @@ public class ConsoleUI implements HangmanUI{
             printMessage("You guessed wrong!", ANSI_RED);
         }
     }
+
+    public Difficulty askForDifficulty() {
+        System.out.println("Choose difficulty: EASY, MEDIUM, HARD");
+        Difficulty difficulty = null;
+        while (difficulty == null) {
+            try {
+                String input = scanner.nextLine().trim().toUpperCase();
+                difficulty = Difficulty.valueOf(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid choice. Please type EASY, MEDIUM, or HARD:");
+            }
+        }
+
+        return difficulty;
+    }
 }

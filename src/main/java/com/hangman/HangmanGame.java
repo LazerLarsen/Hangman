@@ -10,8 +10,8 @@ public class HangmanGame {
     private int _maxAttempts = 4;
     private int _attempts = 0;
 
-    public HangmanGame(WordProvider provider){
-        this._wordToGuess = provider.getRandomWord();
+    public HangmanGame(WordProvider provider, Difficulty difficulty){
+        this._wordToGuess = provider.getRandomWord(difficulty);
     }
 
     public String getWord(){

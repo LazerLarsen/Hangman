@@ -1,5 +1,5 @@
 package com.hangman;
 
 public interface WordProvider {
-    public String getRandomWord();
+    public String getRandomWord(Difficulty difficulty);
 }

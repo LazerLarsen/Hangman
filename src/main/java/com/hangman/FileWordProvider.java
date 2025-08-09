@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -40,8 +41,17 @@ public class FileWordProvider implements WordProvider {
     }
 
     @Override
-    public String getRandomWord(){
-        int index = random.nextInt(words.size());
-        return words.get(index);
+    public String getRandomWord(Difficulty difficulty){
+        List<String> filtered = new ArrayList();
+        for (String w : words){
+            if (difficulty == Difficulty.EASY && w.length() <= 4) {
+                filtered.add(w);
+            } else if (difficulty == Difficulty.MEDIUM && w.length() > 4 && w.length() <= 7) {
+                filtered.add(w);
+            } else if (difficulty == Difficulty.HARD && w.length() > 7) {
+                filtered.add(w);
+            }
+        }
+        return filtered.get(random.nextInt(filtered.size()));
     }
 }
